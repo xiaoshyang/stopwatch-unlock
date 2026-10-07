@@ -1,0 +1,66 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# MacOS desktop metadata files
+.DS_Store
+
+# Build files
+build/
+cmake-build-*/
+# 注意：components/ 和 managed_components/ 必须入库（vendored 组件，
+# 组件管理器不会拉取它们；不入库新 clone 无法编译）
+
+# PlatformIO
+.pio/
+
+# VSCode
+.vscode/
+.cache/
+
+# Python virtual environment
+.venv/
+
+# Debug / Release files
+Debug/
+debug/
+Release/
+release/
+out/
+bin/
+obj/
+
+*.code-workspace
+
+# sdkconfig 必须入库：蓝牙/USB 等关键配置在里面
+sdkconfig.old
+sdkconfig.bak
