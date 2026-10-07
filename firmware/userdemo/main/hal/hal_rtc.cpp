@@ -126,7 +126,7 @@ void Hal::setTimezone(std::string_view tz)
 std::string Hal::getTimezone()
 {
     Settings settings("system", false);
-    return settings.GetString("tz", "GMT0");
+    return settings.GetString("tz", "CST-8");   /* 默认北京时间 UTC+8（POSIX TZ：CST-8 = UTC+8） */
 }
 
 DateYmd Hal::getDateYmd()
