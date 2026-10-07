@@ -29,7 +29,7 @@
 #define UNLOCK_OTHER_GPIO GPIO_NUM_2
 #define UNLOCK_HOLD_MS    700
 #define UNLOCK_LOCKOUT_MS 2500
-#define UNLOCK_DEFAULT_DELAY_MS 800
+#define UNLOCK_DEFAULT_DELAY_MS 300   /* Shift 唤醒后等锁屏就绪；NVS delay 键可覆盖 */
 #define UNLOCK_CHAR_DELAY_MS    8
 #define UNLOCK_BACKSPACES 24
 #define UNLOCK_POLL_MS    20
@@ -103,10 +103,10 @@ static void ble_send_key(uint8_t modifier, uint8_t keycode) {
     buf[0] = modifier;
     buf[2] = keycode;
     esp_hidd_dev_input_set(s_ble_hid, 0, 1, buf, 8);
-    vTaskDelay(pdMS_TO_TICKS(50));      /* BLE 包间隔：保守 50ms */
+    vTaskDelay(pdMS_TO_TICKS(15));      /* BLE 包间隔：15ms（USB 用 6/8ms 也稳，BLE 留双倍余量） */
     memset(buf, 0, sizeof(buf));
     esp_hidd_dev_input_set(s_ble_hid, 0, 1, buf, 8);
-    vTaskDelay(pdMS_TO_TICKS(50));
+    vTaskDelay(pdMS_TO_TICKS(15));
 }
 
 static void ble_send_ascii(uint8_t v) {
